@@ -4,16 +4,16 @@ from django.db import models
 from django.contrib.auth.models import AbstractUser
 
 CAMPI = (
+    ('ndf', 'Não definido'),
     ('ara', 'Aracati'),
     ('for', 'Fortaleza'),
-    ('ndf', 'Não definido'),
 )
 
 class User(AbstractUser):
-    campus = models.CharField(max_length=3, choices=CAMPI, default=CAMPI[2][0])
+    campus = models.CharField(max_length=3, choices=CAMPI, default=CAMPI[0][0])
 
     email = models.EmailField(unique=True)
 
-    REQUIRED_FIELDS = ['campus', 'username']
+    REQUIRED_FIELDS = ['campus', 'username', 'first_name', 'last_name']
     USERNAME_FIELD = 'email'
 

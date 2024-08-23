@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ativação de conta</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+    <script>
+        window.onload = function(){
+            axios.post('/auth/users/activation/', {
+                uid: "{{uid}}",
+                token: "{{token}}"
+            })
+                .then(function (response) {
+                    const div = document.querySelector('.mensagem')
+                    div.innerHTML = "<h1>Conta ativada com sucesso!</h1>"
+                })
+                .catch(function (error) {
+                     const divMensagem = document.querySelector('.mensagem')
+                     const mensagem = error.response.data['detail']
+                    divMensagem.innerHTML = "<h1>Erro: " + mensagem + "</h1>"
+                });
+        }
+    </script>
+</head>
+
+<body>
+
+    <div class="mensagem"></div>
+
+</body>
+
+</html>
