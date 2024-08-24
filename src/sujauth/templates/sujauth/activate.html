@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 
 <head>
     <meta charset="UTF-8">
@@ -8,7 +8,7 @@
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
     <script>
-        window.onload = function(){
+        window.onload = function () {
             axios.post('/auth/users/activation/', {
                 uid: "{{uid}}",
                 token: "{{token}}"
@@ -18,9 +18,8 @@
                     div.innerHTML = "<h1>Conta ativada com sucesso!</h1>"
                 })
                 .catch(function (error) {
-                     const divMensagem = document.querySelector('.mensagem')
-                     const mensagem = error.response.data['detail']
-                    divMensagem.innerHTML = "<h1>Erro: " + mensagem + "</h1>"
+                    const divMensagem = document.querySelector('.mensagem')
+                    divMensagem.innerHTML = "<h1>Falha na ativação da conta.</h1>"
                 });
         }
     </script>
